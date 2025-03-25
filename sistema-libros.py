@@ -95,3 +95,13 @@ def consultarLibro():
 
     print(" No se encontró un libro con ese ID.\n")
 
+def listarLibros():
+    if not books:
+        print("📚 No hay libros registrados.\n")
+        return
+
+    print("\n📖 Lista de libros:")
+    for book in books:
+        estado = "Disponible" if book["disponible"] else "No disponible"
+        print(f"ID: {book['id']} | {book['titulo']} - {book['autor']} ({estado})")
+    print()
