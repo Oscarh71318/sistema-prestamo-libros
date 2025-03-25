@@ -41,3 +41,28 @@ def listarLibros():
 addBook()
 addBook()
 listarLibros()
+
+def prestarLibro():
+    listarLibros()  # Muestra los libros disponibles
+    libro_id = int(input("Ingrese el ID del libro que desea prestar: "))
+
+    for book in books:
+        if book["id"] == libro_id:
+            if not book["disponible"]:
+                print(" El libro ya está prestado.\n")
+                return
+            
+            usuario = {
+                "nombre": input("Ingrese su nombre: "),
+                "apellido": input("Ingrese su apellido: "),
+                "cedula": input("Ingrese su cédula: "),
+                "telefono": input("Ingrese su teléfono: ")
+            }
+
+            book["disponible"] = False
+            book["prestado_a"] = usuario
+            print(f" Libro '{book['titulo']}' prestado a {usuario['nombre']} {usuario['apellido']}.\n")
+            return
+
+    print(" No se encontró un libro con ese ID.\n")
+
