@@ -66,3 +66,22 @@ def prestarLibro():
 
     print(" No se encontró un libro con ese ID.\n")
 
+
+def devolverLibro():
+    listarLibros()  # Muestra los libros actuales
+    libro_id = int(input("Ingrese el ID del libro que desea devolver: "))
+
+    for book in books:
+        if book["id"] == libro_id:
+            if book["disponible"]:
+                print(" Este libro ya está disponible.\n")
+                return
+
+            book["disponible"] = True
+            book.pop("prestado_a", None)  # Elimina la info del usuario
+            print(f" Libro '{book['titulo']}' devuelto correctamente.\n")
+            return
+
+    print(" No se encontró un libro con ese ID.\n")
+
+
