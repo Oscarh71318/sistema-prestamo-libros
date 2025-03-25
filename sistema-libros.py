@@ -84,4 +84,14 @@ def devolverLibro():
 
     print(" No se encontró un libro con ese ID.\n")
 
+def consultarLibro():
+    libro_id = int(input("Ingrese el ID del libro que desea consultar: "))
+
+    for book in books:
+        if book["id"] == libro_id:
+            estado = "Disponible" if book["disponible"] else "Prestado"
+            print(f" El libro '{book['titulo']}' está {estado}.\n")
+            return
+
+    print(" No se encontró un libro con ese ID.\n")
 
