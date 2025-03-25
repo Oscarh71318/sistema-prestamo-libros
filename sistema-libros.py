@@ -95,3 +95,25 @@ def consultarLibro():
 
     print(" No se encontró un libro con ese ID.\n")
 
+def listarLibros():
+    if not books:
+        print("📚 No hay libros registrados.\n")
+        return
+
+    print("\n📖 Lista de libros:")
+    for book in books:
+        estado = "Disponible" if book["disponible"] else "No disponible"
+        print(f"ID: {book['id']} | {book['titulo']} - {book['autor']} ({estado})")
+    print()
+def listarPrestamos():
+    prestamos = [book for book in books if not book["disponible"]]
+
+    if not prestamos:
+        print("📌 No hay préstamos activos.\n")
+        return
+
+    print("\n📋 Lista de préstamos:")
+    for book in prestamos:
+        usuario = book["prestado_a"]
+        print(f"📖 '{book['titulo']}' prestado a {usuario['nombre']} {usuario['apellido']} (Cédula: {usuario['cedula']})")
+    print()
